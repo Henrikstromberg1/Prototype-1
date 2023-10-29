@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class DestroyEnemies : MonoBehaviour
 {
+    private float lowerBound = -10f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +15,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * 20);
-      
+        if (transform.position.z < lowerBound)
+        {
+            Destroy(gameObject);
+        }
     }
 }
